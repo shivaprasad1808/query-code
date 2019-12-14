@@ -1,0 +1,12 @@
+select drug_info.dr_acc_no, dr_name, dr_smiles, inchi_key, CAS_NO, dr_mol_WT, dr_mol_formula, pubchem_id, IUPAC, dr_ei, dr_2D, dr_3D,
+met_info.met_acc_no,  met_smiles, met_mol_wt, met_mol_formula, met_ei, met_2D, met_3D, reactive_centre, fukui_function, local_ei 
+
+from drug_info 
+join met_info 
+
+on 
+drug_info.dr_acc_no = met_info.dr_acc_no
+left join local_reactivity_descriptor
+on 
+met_info.met_acc_no =  local_reactivity_descriptor. met_acc_no
+where drug_info.dr_name = "tolcapone"
